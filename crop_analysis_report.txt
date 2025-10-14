@@ -1,0 +1,23 @@
+==================================================
+       CROP YIELD ANALYSIS REPORT
+==================================================
+
+Team Members:
+- Weijian Fan (vidafan@umich.edu)
+- Mizuki Kuno (mizuki@umich.edu)
+
+--------------------------------------------------
+ANALYSIS RESULTS:
+--------------------------------------------------
+
+Weijian's Calculations:
+1. Percentage of Soybean crops in sandy soil with rainy weather: 5.57%
+2. Average temperature for Soybean crops in the South: 27.53°C
+
+Mizuki's Calculations:
+1. Average rainfall for Rice crops in the North: 549.17 mm
+2. Percentage of fertilized Rice crops yielding >8 tons/hectare: 4.06%
+
+==================================================
+Report generated successfully
+==================================================
