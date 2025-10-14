@@ -122,8 +122,63 @@ def main():
 class TestCropCalculations(unittest.TestCase):
 # 4 test cases for each calculations
 # Calc 1 (Vida)
+    # Regular test case 1
+    def test_calc_soybean_rain_percent_single(self):
+        sample_data1 = [{'Region': 'North', 'Soil_Type': 'Sandy', 'Crop': 'Soybean', 'Rainfall_mm': '986.8663313367325', 'Temperature_Celsius': '16.64419019137728', 'Fertilizer_Used': 'False', 'Irrigation_Used': 'True', 'Weather_Condition': 'Rainy', 'Days_to_Harvest': '146', 'Yield_tons_per_hectare': '6.517572507555278'},
+                        {'Region': 'South', 'Soil_Type': 'Silt', 'Crop': 'Soybean', 'Rainfall_mm': '797.4711823962564', 'Temperature_Celsius': '37.70497446941277', 'Fertilizer_Used': 'False', 'Irrigation_Used': 'True', 'Weather_Condition': 'Rainy', 'Days_to_Harvest': '74', 'Yield_tons_per_hectare': '5.898416311841461'},
+                        {'Region': 'North', 'Soil_Type': 'Loam', 'Crop': 'Soybean', 'Rainfall_mm': '600.1997541490214', 'Temperature_Celsius': '20.935360153951528', 'Fertilizer_Used': 'True', 'Irrigation_Used': 'False', 'Weather_Condition': 'Sunny', 'Days_to_Harvest': '75', 'Yield_tons_per_hectare': '4.8981807530789006'}]
+        result = calc_soybean_rain_percent(self.sample_data1)
+        self.assertAlmostEqual(result, 0.3333)
 
-# Calc 2 (Vida)
+    # Regular test case 2
+    def test_calc_soybean_rain_percent_multiple(self):
+        sample_data2 = [{'Region': 'North', 'Soil_Type': 'Sandy', 'Crop': 'Soybean', 'Rainfall_mm': '986.8663313367325', 'Temperature_Celsius': '16.64419019137728', 'Fertilizer_Used': 'False', 'Irrigation_Used': 'True', 'Weather_Condition': 'Rainy', 'Days_to_Harvest': '146', 'Yield_tons_per_hectare': '6.517572507555278'},
+                        {'Region': 'South', 'Soil_Type': 'Silt', 'Crop': 'Soybean', 'Rainfall_mm': '797.4711823962564', 'Temperature_Celsius': '37.70497446941277', 'Fertilizer_Used': 'False', 'Irrigation_Used': 'True', 'Weather_Condition': 'Rainy', 'Days_to_Harvest': '74', 'Yield_tons_per_hectare': '5.898416311841461'},
+                        {'Region': 'North', 'Soil_Type': 'Loam', 'Crop': 'Soybean', 'Rainfall_mm': '600.1997541490214', 'Temperature_Celsius': '20.935360153951528', 'Fertilizer_Used': 'True', 'Irrigation_Used': 'False', 'Weather_Condition': 'Sunny', 'Days_to_Harvest': '75', 'Yield_tons_per_hectare': '4.8981807530789006'},
+                        {'Region': 'West', 'Soil_Type': 'Sandy', 'Crop': 'Soybean', 'Rainfall_mm': '655.5829114621207', 'Temperature_Celsius': '22.490469797002447', 'Fertilizer_Used': 'True', 'Irrigation_Used': 'False', 'Weather_Condition': 'Rainy', 'Days_to_Harvest': '105', 'Yield_tons_per_hectare': '5.268460324634402'}]
+        result = calc_soybean_rain_percent(sample_data2)
+        self.assertAlmostEqual(result, 0.5)
+
+    # Edge case 1
+    def test_no_soybeans(self):
+        sample_data3 = [{'Region': 'East', 'Soil_Type': 'Sandy', 'Crop': 'Cotton', 'Rainfall_mm': '145.3006808203336', 'Temperature_Celsius': '19.755534985496798', 'Fertilizer_Used': 'True', 'Irrigation_Used': 'True', 'Weather_Condition': 'Cloudy', 'Days_to_Harvest': '141', 'Yield_tons_per_hectare': '4.367612094467675'},
+                        {'Region': 'East', 'Soil_Type': 'Chalky', 'Crop': 'Rice', 'Rainfall_mm': '874.4567441463316', 'Temperature_Celsius': '27.25686895920963', 'Fertilizer_Used': 'True', 'Irrigation_Used': 'False', 'Weather_Condition': 'Sunny', 'Days_to_Harvest': '115', 'Yield_tons_per_hectare': '5.839291310818685'}]
+        result = calc_soybean_rain_percent(sample_data3)
+        self.assertEqual(result, 0)
+
+    # Edge case 2
+    def test_nothing_in_list(self):
+        sample_data4 = []
+        result = calc_soybean_rain_percent(sample_data4)
+        self.assertEqual(result, 0)
+
+
+# Clac 2 (Vida)
+    # Regular test case 1
+    def test_calc_avg_temp_south_soybean_multiple(self):
+        sample_data1 = [{'Region': 'South', 'Soil_Type': 'Silt', 'Crop': 'Soybean', 'Rainfall_mm': '797.4711823962564', 'Temperature_Celsius': '37.70497446941277', 'Fertilizer_Used': 'False', 'Irrigation_Used': 'True', 'Weather_Condition': 'Rainy', 'Days_to_Harvest': '74', 'Yield_tons_per_hectare': '5.898416311841461'},
+                        {'Region': 'South', 'Soil_Type': 'Silt', 'Crop': 'Soybean', 'Rainfall_mm': '713.9886919759452', 'Temperature_Celsius': '33.86148554253913', 'Fertilizer_Used': 'True' , 'Irrigation_Used': 'True', 'Weather_Condition': 'Sunny', 'Days_to_Harvest': '70', 'Yield_tons_per_hectare': '6.960186332830285'}]
+        result = calc_avg_temp_south_soybean(sample_data1)
+        self.assertAlmostEqual(result, 35.7832)
+
+    # Regular test case 2
+    def test_calc_avg_temp_south_soybean_single(self):
+        sample_data2 = [{'Region': 'South', 'Soil_Type': 'Silt', 'Crop': 'Soybean', 'Rainfall_mm': '797.4711823962564', 'Temperature_Celsius': '37.70497446941277', 'Fertilizer_Used': 'False', 'Irrigation_Used': 'True', 'Weather_Condition': 'Rainy', 'Days_to_Harvest': '74', 'Yield_tons_per_hectare': '5.898416311841461'}]
+        result = calc_avg_temp_south_soybean(sample_data2)
+        self.assertAlmostEqual(result, 37.7049)
+    
+    # Edge case 1
+    def test_no_south_soybeans(self):
+        sample_data3 = [{'Region': 'North', 'Soil_Type': 'Sandy', 'Crop': 'Soybean', 'Rainfall_mm': '986.8663313367325', 'Temperature_Celsius': '16.64419019137728', 'Fertilizer_Used': 'False', 'Irrigation_Used': 'True', 'Weather_Condition': 'Rainy', 'Days_to_Harvest': '146', 'Yield_tons_per_hectare': '6.517572507555278'},
+                        {'Region': 'East', 'Soil_Type': 'Chalky', 'Crop': 'Rice', 'Rainfall_mm': '874.4567441463316', 'Temperature_Celsius': '27.25686895920963', 'Fertilizer_Used': 'True', 'Irrigation_Used': 'False', 'Weather_Condition': 'Sunny', 'Days_to_Harvest': '115', 'Yield_tons_per_hectare': '5.839291310818685'}]
+        result = calc_avg_temp_south_soybean(sample_data3)
+        self.assertEqual(result, 0)
+
+    # Edge case 2
+    def test_nothing_in_list(self):
+        sample_data4 = []
+        result = calc_avg_temp_south_soybean(sample_data4)
+        self.assertEqual(result, 0)
 
 # Calc 3 (Mizuki)
 
