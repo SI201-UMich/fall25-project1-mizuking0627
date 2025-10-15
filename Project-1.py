@@ -1,4 +1,12 @@
-# Project 1 Workspace
+# SI 201 Project 1
+# Your name: Mizuki Kuno
+# Your student id: 78832653
+# Your email: mizuki@umich.edu
+# Who or what you worked with on this project (including generative AI):
+# Collaborators:
+    # name: Weijian Fan (Vida)
+    # student id: 20329072
+    # email: vidafan@umich.edu
 
 import csv
 import unittest
