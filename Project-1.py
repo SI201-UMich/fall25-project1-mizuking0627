@@ -3,15 +3,17 @@
 # Your student id: 78832653
 # Your email: mizuki@umich.edu
 # Who or what you worked with on this project (including generative AI):
-# Collaborators:
+# Collaborator:
     # name: Weijian Fan (Vida)
     # student id: 20329072
     # email: vidafan@umich.edu
+# Generative AI: ChatGPT 
+    # used for code optimization and debugging assistance
 
 import csv
 import unittest
 
-# load_crop_data(csv_file)
+# load_crop_data(csv_file) - Vida
     # Reads the crop_yield.csv file and transforms the data into a list of dictionaries
     # INPUT: csv_file (string)
     # OUTPUT: loaded_data (list of dictionaries)
@@ -34,7 +36,7 @@ def load_crop_data(file):
       
 load_crop_data('crop_yield.csv')
 
-# get_subject_dict(subject, loaded_data) helper function
+# get_subject_dict(subject, loaded_data) helper function - Vida
     # From loaded data, find a dictionaries with the subject presented
     # Generate a list of dictionaries with the subject
     # INPUT: a string (subject), list of dictionaries (loaded_data)
@@ -145,7 +147,7 @@ def calc_high_yield_rice_percent(crop_data):
     pass
 
 
-# generate_report(results)
+# generate_report(results) - Mizuki
     # Takes a dictionary of calculated results
     # Write them to a file
     # INPUT: a dictionary for calculated results
@@ -177,7 +179,7 @@ def generate_report(results):
         file.write("=" * 50 + "\n")
     pass
 
-# main()
+# main() - Mizuki
     # Runs the entire program
     # INPUT: None
     # OUTPUT: None
